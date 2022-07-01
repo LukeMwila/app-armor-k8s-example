@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apparmor-profiles
+  namespace: apparmor
+data:
+  k8s-apparmor-deny-writes: |-
+    #include <tunables/global>
+    profile k8s-apparmor-deny-writes flags=(attach_disconnected) {
+      #include <abstractions/base>
+      file,
+      # Deny all file writes.
+      deny /** w,
+    }
