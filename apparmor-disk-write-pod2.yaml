@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: apparmor-disk-write-test
+  annotations:
+    container.apparmor.security.beta.kubernetes.io/express-test: localhost/k8s-apparmor-deny-writes
+spec: 
+  containers:
+  - name: express-test
+    image: lukondefmwila/express-test:1.0.2
